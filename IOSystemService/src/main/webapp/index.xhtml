@@ -1,0 +1,54 @@
+<html xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>IOSystem Service</title>
+</h:head>
+<h:body>
+    <h:form id="fileForm">
+        <h2>IOSystem Service</h2>
+
+        <!-- Input field for file path -->
+        <p:panel header="File Path">
+            <p:inputText id="filePath" value="#{ioSystemController.filePath}" required="true" label="File Path"/>
+        </p:panel>
+
+        <!-- File Content Field -->
+        <p:panel header="File Content">
+            <p:inputTextarea id="fileContent" value="#{ioSystemController.fileContent}" rows="5" cols="50" label="File Content"/>
+        </p:panel>
+
+        <!-- Buttons for file operations -->
+        <p:commandButton value="Read File" action="#{ioSystemController.readFile}" update="fileContent,statusMessage"/>
+        <p:commandButton value="Write File" action="#{ioSystemController.writeFile}" update="statusMessage"/>
+        <p:commandButton value="Delete File" action="#{ioSystemController.deleteFile}" update="statusMessage"/>
+
+        <!-- Display File Content -->
+        <p:panel header="Read File Content">
+            <p:outputLabel value="#{ioSystemController.fileContent}" escape="false" style="white-space: pre-wrap;"/>
+        </p:panel>
+
+        <!-- Status Message -->
+        <p:messages id="statusMessage" autoUpdate="true"/>
+    </h:form>
+
+    <!-- Directory Listing Section -->
+    <h:form id="directoryForm">
+        <h2>List Files in Directory</h2>
+
+        <p:panel header="Directory Path">
+            <p:inputText id="directoryPath" value="#{ioSystemController.directoryPath}" required="true" label="Directory Path"/>
+        </p:panel>
+
+        <p:commandButton value="List Files" action="#{ioSystemController.listFiles}" update="fileList,statusMessage"/>
+
+        <!-- Display list of files -->
+        <p:dataTable id="fileList" var="file" value="#{ioSystemController.listFiles()}">
+            <p:column headerText="File Name">
+                <h:outputText value="#{file}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+</h:body>
+</html>
