@@ -1,0 +1,67 @@
+<html xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+      
+<h:head>
+    <style>
+        body, h1 {
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            margin: 0 auto;
+            margin-top: 100px;
+            padding: 40px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .google-btn {
+            display: inline-block;
+            background: white;
+            color: #444;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .google-btn:hover {
+            background-color: #f7f7f7;
+        }
+        .google-icon {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</h:head>
+<h:body>
+
+    <div class="login-container">
+        
+            <h:form>
+            <p:outputLabel value="Entramos: #{empiezaAqui.companyName}" />
+                <p:commandButton value="Print Properties" action="#{propertiesService.loadAndPrintProperties}" />
+
+                <!--  			<p:panelGrid columns="1" styleClass="center-align" columnClasses="center-align"> -->
+                <!-- 
+                
+                	Google Login Button 
+                
+                CREATE 'client_id':https://developers.google.com/identity/oauth2/web/guides/get-google-api-clientid
+                
+                
+                -->
+                
+                <a class="google-btn" href="https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile"> <!--  &redirect_uri=https://www.google.com&response_type=code&client_id=895978670605-3bkt91t9ptngudk8prmfm64j2bdag3lt.apps.googleusercontent.com">
+               		 -->
+                    <img class="google-icon" src="https://developers.google.com/identity/images/g-logo.png" alt="Google" width="20px"/>
+                    Sign in with Google
+                </a>
+<!-- 			</p:panelGrid> -->
+            </h:form>
+    </div>
+</h:body>
+</html>

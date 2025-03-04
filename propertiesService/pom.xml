@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hawaii.epc-instore</groupId>
+  <artifactId>PropertiesService</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+   <dependencies>  
+    <!-- Jakarta EE 10 Dependency -->
+    <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>10.0.0</version>
+        <scope>provided</scope>
+    </dependency>
+
+	   <dependency>
+		   <groupId>org.apache.myfaces.core</groupId>
+		   <artifactId>myfaces-api</artifactId>
+		   <version>4.0.2</version>
+		   <scope>provided</scope>
+	   </dependency>
+	<dependency>
+      <groupId>org.apache.myfaces.core</groupId>
+      <artifactId>myfaces-impl</artifactId>
+      <version>4.0.2</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>3.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+   <dependency>
+       <groupId>org.projectlombok</groupId>
+       <artifactId>lombok</artifactId>
+       <version>1.18.30</version>
+   </dependency>
+
+	<dependency>
+	  <groupId>org.slf4j</groupId>
+	  <artifactId>slf4j-api</artifactId>
+	  <version>1.7.26</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.slf4j</groupId>
+	  <artifactId>slf4j-simple</artifactId>
+	  <version>1.7.21</version>
+	</dependency>
+  <!-- Logback dependencies for logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.11</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.4.11</version>
+        </dependency>
+
+    <!-- PrimeFaces Dependency -->
+    <dependency>
+	    <groupId>org.primefaces</groupId>
+	    <artifactId>primefaces</artifactId>
+	    <version>14.0.0</version>
+	    <classifier>jakarta</classifier>
+	</dependency>
+
+
+	   <dependency>
+	    <groupId>org.apache.derby</groupId>
+	    <artifactId>derby</artifactId>
+	    <version>10.17.1.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+	<dependency>
+	    <groupId>org.apache.derby</groupId>
+	    <artifactId>derbyclient</artifactId>
+	    <version>10.17.1.0</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.derby/derbytools -->
+	<dependency>
+	    <groupId>org.apache.derby</groupId>
+	    <artifactId>derbytools</artifactId>
+	    <version>10.17.1.0</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.derby/derbyshared -->
+	<dependency>
+	    <groupId>org.apache.derby</groupId>
+	    <artifactId>derbyshared</artifactId>
+	    <version>10.17.1.0</version>
+	</dependency>
+
+
+	<dependency>
+	    <groupId>org.xerial</groupId>
+	    <artifactId>sqlite-jdbc</artifactId>
+	    <version>3.42.0.0</version>
+	</dependency>
+
+
+	   <!-- JUnit 5 -->
+	   <dependency>
+		   <groupId>org.junit.jupiter</groupId>
+		   <artifactId>junit-jupiter-api</artifactId>
+		   <version>5.10.0</version>
+		   <scope>test</scope>
+	   </dependency>
+	   <dependency>
+		   <groupId>org.junit.jupiter</groupId>
+		   <artifactId>junit-jupiter-engine</artifactId>
+		   <version>5.10.0</version>
+		   <scope>test</scope>
+	   </dependency>
+
+	   <!-- Mockito -->
+	   <dependency>
+		   <groupId>org.mockito</groupId>
+		   <artifactId>mockito-core</artifactId>
+		   <version>5.5.0</version>
+		   <scope>test</scope>
+	   </dependency>
+	   <dependency>
+		   <groupId>org.mockito</groupId>
+		   <artifactId>mockito-inline</artifactId>
+		   <version>5.2.0</version>
+		   <scope>test</scope>
+	   </dependency>
+	   <dependency>
+		   <groupId>org.mockito</groupId>
+		   <artifactId>mockito-junit-jupiter</artifactId>
+		   <version>5.5.0</version>
+		   <scope>test</scope>
+	   </dependency>
+	   <dependency>
+		   <groupId>org.junit.jupiter</groupId>
+		   <artifactId>junit-jupiter-api</artifactId>
+		   <version>5.10.0</version>
+		   <scope>test</scope>
+	   </dependency>
+
+
+   </dependencies>
+
+</project>
