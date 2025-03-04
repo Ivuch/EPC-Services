@@ -1,0 +1,27 @@
+<html xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Send Email</title>
+</h:head>
+<h:body>
+    <h:form id="emailForm">
+        <h3>Send an Email</h3>
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="email" value="Recipient Email:" />
+            <p:inputText id="email" value="#{emailService.toEmail}" required="true" />
+
+            <h:outputLabel for="subject" value="Subject:" />
+            <p:inputText id="subject" value="#{emailService.subject}" required="true" />
+
+            <h:outputLabel for="body" value="Message Body:" />
+            <p:inputTextarea id="body" value="#{emailService.body}" rows="6" cols="30" required="true" />
+        </h:panelGrid>
+
+        <p:commandButton value="Send Email" action="#{emailService.sendEmail}" update="emailForm:messages" />
+
+        <h:messages id="messages" globalOnly="true" />
+    </h:form>
+</h:body>
+</html>
