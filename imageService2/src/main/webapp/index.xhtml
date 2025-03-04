@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Image CRUD with PrimeFaces</title>
+    <style>
+        .thumbnail {
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form enctype="multipart/form-data">
+        <p:panel header="Upload Image">
+            <p:messages />
+            <p:fileUpload value="#{imageController.uploadedFile}"
+                          mode="simple"
+                          accept=".jpg,.jpeg" />
+            <p:inputText value="#{imageController.image.title}" placeholder="Image Name" />
+            <p:commandButton value="Upload" action="#{imageController.upload()}" update="@form" />
+        </p:panel>
+    </h:form>
+
+    <h:form>
+        <p:selectOneMenu id="countryDropdown" value="#{dropdownBean.selectedCountry}">
+            <f:selectItem itemLabel="Select a country" itemValue="" />
+            <f:selectItem itemLabel="Argentina" itemValue="AR" />
+            <f:selectItem itemLabel="Brazil" itemValue="BR" />
+            <f:selectItem itemLabel="United States" itemValue="US" />
+            <f:selectItem itemLabel="Puerto Rico" itemValue="PR" />
+            <p:ajax update="routeDisplay,flagImage" />
+        </p:selectOneMenu>
+        <p:commandButton value="Submit" action="#{dropdownBean.submit}" update="routeDisplay,flagImage" />
+        <h:outputText id="routeDisplay" value="#{dropdownBean.route}" />
+        <h:panelGroup id="flagImage">
+            <h:graphicImage value="#{dropdownBean.flagUrl}" rendered="#{not empty dropdownBean.flagUrl}" />
+        </h:panelGroup>
+    </h:form>
+
+    <h:form>
+        <p:dataTable value="#{imageController.getAllImages()}" var="image" style="margin-top: 20px;">
+            <p:column headerText="Thumbnail">
+                <p:graphicImage value="#{image.thumbnailImageSrc}" alt="#{image.alt}"
+                                styleClass="thumbnail" onclick="PF('imageDialog_#{image.title}').show()" />
+                <p:dialog widgetVar="imageDialog_#{image.title}" modal="true" header="Image Preview" resizable="false">
+                    <p:graphicImage value="#{image.itemImageSrc}" alt="#{image.alt}" style="width: 100%;" />
+                </p:dialog>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{image.title}" />
+            </p:column>
+            <p:column headerText="Actions">
+                <p:commandButton icon="pi pi-trash" value="Delete" action="#{imageController.deleteImage(image.title)}" update="@form" />
+                <p:commandButton icon="pi pi-download" value="Download" ajax="false">
+                    <p:fileDownload value="#{imageController.downloadImage(image.title)}" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>
