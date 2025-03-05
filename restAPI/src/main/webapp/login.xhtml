@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Login Successful</title>
+</h:head>
+<h:body>
+    <h2>Welcome, #{sessionScope.claims['name']}</h2>
+    <h3>Claims:</h3>
+
+    <h:dataTable value="#{sessionScope.claims.entrySet().toArray()}" var="entry">
+        <h:column>
+            <!-- If the key is "picture", render an image -->
+            <h:panelGroup rendered="#{entry.key == 'picture'}">
+                <p><b>#{entry.key}</b>: </p>
+                <h:graphicImage value="#{entry.value}" alt="Profile Image" width="100" height="100" />
+            </h:panelGroup>
+
+            <!-- Otherwise, render the key-value as text -->
+            <h:panelGroup rendered="#{entry.key != 'picture'}">
+                <p><b>#{entry.key}</b>: #{entry.value}</p>
+            </h:panelGroup>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
