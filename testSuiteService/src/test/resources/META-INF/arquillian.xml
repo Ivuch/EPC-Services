@@ -1,0 +1,5 @@
+<arquillian xmlns="http://jboss.org/schema/arquillian-1.0">
+    <default>
+        <container qualifier="tomee-embedded" default="true" />
+    </default>
+</arquillian>
