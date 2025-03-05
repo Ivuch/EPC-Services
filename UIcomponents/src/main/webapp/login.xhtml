@@ -1,0 +1,74 @@
+<html xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>My PrimeFaces Website</title>
+    <h:outputStylesheet name="style.css"/>
+    <h:outputScript name="scripts.js"/>
+</h:head>
+
+<h:body>
+    <h:form>
+
+        <!-- Header Section -->
+        <header>
+            <h:outputText value="My PrimeFaces Website" styleClass="site-title" />
+            <p:commandButton value="Login" icon="pi pi-user" action="#{GeneralBean.login}" styleClass="login-btn" />
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav>
+            <p:menu>
+                <p:submenu label="Home">
+                    <p:menuitem value="Home" outcome="index" icon="pi pi-home"/>
+                </p:submenu>
+                <p:submenu label="About Us">
+                    <p:menuitem value="Who We Are" outcome="about" icon="pi pi-info"/>
+                    <p:menuitem value="What We Do" outcome="services" icon="pi pi-briefcase"/>
+                </p:submenu>
+                <p:submenu label="Contact">
+                    <p:menuitem value="Get in Touch" outcome="contact" icon="pi pi-envelope"/>
+                </p:submenu>
+            </p:menu>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h:outputText value="Welcome to Our Website" styleClass="hero-title"/>
+            <h:outputText value="We provide amazing services!" styleClass="hero-subtitle"/>
+            <p:commandButton value="Learn More" action="#{GeneralBean.learnMore}" styleClass="hero-btn" />
+        </section>
+
+        <!-- Content Section: Featured Services -->
+        <section class="content">
+            <h2>Featured Services</h2>
+            <div class="service-boxes">
+                <p:panelGrid columns="3" styleClass="services">
+                    <p:panel header="Service 1" styleClass="service-box">
+                        <h:outputText value="Description of service 1." />
+                    </p:panel>
+                    <p:panel header="Service 2" styleClass="service-box">
+                        <h:outputText value="Description of service 2." />
+                    </p:panel>
+                    <p:panel header="Service 3" styleClass="service-box">
+                        <h:outputText value="Description of service 3." />
+                    </p:panel>
+                </p:panelGrid>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <h2>Subscribe to our Newsletter</h2>
+            <p:inputText value="#{GeneralBean.email}" placeholder="Enter your email" />
+            <p:commandButton value="Subscribe" action="#{GeneralBean.subscribe}" styleClass="subscribe-btn" />
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <h:outputText value=" 2024 My PrimeFaces Website. All rights reserved." />
+        </footer>
+
+    </h:form>
+</h:body>
+</html>

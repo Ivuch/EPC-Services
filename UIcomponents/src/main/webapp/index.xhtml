@@ -1,0 +1,126 @@
+<html xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>PrimeFaces Components Showcase</title>
+    <h:outputStylesheet name="styles.css"/>
+    <h:outputScript name="scripts.js"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h1>PrimeFaces Components</h1>
+
+        <h:link value="Login" outcome="/login" styleClass="login-btn">
+            <i class="pi pi-user"></i>
+        </h:link>
+
+        <p:commandLink value="Login" icon="pi pi-user" outcome="/login" styleClass="login-btn" />
+
+        <!-- Button -->
+        <h2>Button</h2>
+        <p:commandButton value="Submit" action="#{GeneralBean.submit}" icon="pi pi-check" />
+
+        <!-- InputText -->
+        <h2>Input Text</h2>
+        <p:inputText value="#{GeneralBean.text}" placeholder="Enter text here" />
+
+        <!-- SelectOneMenu -->
+        <h2>Select One Menu</h2>
+        <p:selectOneMenu value="#{GeneralBean.selectedOption}">
+            <f:selectItem itemLabel="Option 1" itemValue="1" />
+            <f:selectItem itemLabel="Option 2" itemValue="2" />
+            <f:selectItem itemLabel="Option 3" itemValue="3" />
+        </p:selectOneMenu>
+
+        <!-- DataTable -->
+        <h2>Data Table</h2>
+        <p:dataTable value="#{GeneralBean.dataList}" var="item">
+            <p:column headerText="ID">
+                <h:outputText value="#{item.id}" />
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{item.name}" />
+            </p:column>
+        </p:dataTable>
+
+        <!-- Calendar -->
+        <h2>Calendar</h2>
+        <p:calendar value="#{GeneralBean.date}" showButtonPanel="true" />
+
+        <!-- Spinner -->
+        <h2>Spinner</h2>
+        <p:spinner value="#{GeneralBean.number}" min="0" max="100" />
+
+        <!-- Checkbox -->
+        <h2>Checkbox</h2>
+        <p:selectBooleanCheckbox value="#{GeneralBean.checked}" />
+
+        <!-- Radio Button -->
+        <h2>Radio Button</h2>
+        <p:selectOneRadio value="#{GeneralBean.radioValue}">
+            <f:selectItem itemLabel="Option A" itemValue="A" />
+            <f:selectItem itemLabel="Option B" itemValue="B" />
+        </p:selectOneRadio>
+
+        <!-- Slider -->
+        <h2>Slider</h2>
+        <p:slider for="sliderInput" value="#{GeneralBean.sliderValue}" />
+        <p:inputText id="sliderInput" value="#{GeneralBean.sliderValue}" style="width:48px;" />
+
+        <!-- Messages -->
+        <h2>Messages</h2>
+        <p:messages />
+
+        <!-- Growl -->
+        <h2>Growl</h2>
+        <p:growl />
+
+        <!-- Panel -->
+        <h2>Panel</h2>
+        <p:panel header="Panel Header">
+            <h:outputText value="This is a PrimeFaces Panel component" />
+        </p:panel>
+
+        <!-- Accordion -->
+        <h2>Accordion Panel</h2>
+        <p:accordionPanel>
+            <p:tab title="Tab 1">
+                <h:outputText value="Content of Tab 1" />
+            </p:tab>
+            <p:tab title="Tab 2">
+                <h:outputText value="Content of Tab 2" />
+            </p:tab>
+        </p:accordionPanel>
+
+        <!-- Chart -->
+        <h2>Chart</h2>
+        <p:chart type="bar" model="#{GeneralBean.chartModel}" />
+
+        <!-- File Upload -->
+        <h2>File Upload</h2>
+        <p:fileUpload mode="advanced" fileUploadListener="#{GeneralBean.handleFileUpload}" />
+
+        <!-- Paginator -->
+        <h2>Paginator</h2>
+<!--        <p:paginator rows="10" totalRecords="#{GeneralBean.totalRecords}" pageLinkSize="5" />-->
+
+        <!-- Progress Bar -->
+        <h2>Progress Bar</h2>
+        <p:progressBar value="#{GeneralBean.progress}" />
+
+        <!-- Dialog -->
+        <h2>Dialog</h2>
+        <p:dialog header="Dialog Header" widgetVar="dlg" modal="true">
+            <h:outputText value="This is a PrimeFaces Dialog component" />
+        </p:dialog>
+        <p:commandButton value="Show Dialog" oncomplete="PF('dlg').show()" />
+
+        <!-- Tooltip -->
+        <h2>Tooltip</h2>
+        <p:tooltip for="inputText" value="This is a tooltip for the input text" />
+        <p:inputText id="inputText" value="#{GeneralBean.mycompany}" />
+
+    </h:form>
+</h:body>
+</html>
