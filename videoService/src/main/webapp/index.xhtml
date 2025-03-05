@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Gestión de Videos</title>
+</h:head>
+<h:body>
+    <h1>Gestión de Videos</h1>
+
+    <!-- Formulario para subir un video -->
+    <h:form enctype="multipart/form-data">
+        <p:panel header="Subir Video">
+            <p:fileUpload value="#{videoController.uploadedFile}"
+                          mode="simple"
+                          accept=".mp4,.mov,.avi,.mkv"/>
+            <p:inputText value="#{videoController.video.name}" placeholder="Video Name" />
+            <p:commandButton value="Subir Video"
+                             action="#{videoController.uploadVideo()}"
+                             update="@form"/>
+        </p:panel>
+    </h:form>
+
+    <!-- Tabla para listar videos -->
+    <p:dataTable id="videoTable" value="#{videoController.videos}" var="video"
+                  style="margin-top:20px;" responsiveLayout="scroll">
+        <p:column headerText="Nombre">
+        <h:outputText value="#{video.name}" />
+            <p:video value="#{video.path}"
+                     player="mp4"
+                     controls="true"
+                     width="420"
+                     height="250"
+                     onplay="console.log('MP4 Started Playing')"
+                     onpause="console.log('MP4 Stopped Playing')">
+                Your browser does not support the video element.
+                See: <h:outputLink value="https://www.w3schools.com/html/html5_video.asp">HTML5 Video</h:outputLink>
+            </p:video>
+    </p:column>
+
+    <p:column headerText="Acciones">
+
+        <!-- Botón para descargar el video -->
+        <p:commandButton value="Descargar"
+                         icon="pi pi-download"
+                         action="#{videoController.downloadVideo(video)}"
+                         ajax="false"/>
+
+        <!-- Botón para eliminar el video -->
+        <p:commandButton value="Eliminar"
+                         icon="pi pi-trash"
+                         action="#{videoController.deleteVideo(video)}"
+                         update=":videoTable"/>
+
+    </p:column>
+</p:dataTable>
+
+<!-- Diálogo para reproducir el video -->
+<p:dialog header="Reproducir Video" widgetVar="videoDialog" modal="true" resizable="false" width="640" height="480">
+    <video id="videoPlayer" width="100%" height="100%" controls="true">
+        <source src="" type="video/mp4"></source>
+        Tu navegador no soporta el elemento de video.
+    </video>
+</p:dialog>
+</h:body>
+</html>
